@@ -11,5 +11,12 @@ config_version=5
 [application]
 
 config/name="breakout-na-godot"
+run/main_scene="res://scenes/fases/fase_01/fase_01.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+window/stretch/mode="canvas_items"
