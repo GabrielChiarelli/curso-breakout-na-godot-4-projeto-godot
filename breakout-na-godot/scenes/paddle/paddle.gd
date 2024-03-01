@@ -4,7 +4,7 @@ extends StaticBody2D
 # Movimento do Paddle
 var velocidade_do_paddle : float = 700.0
 var x_minimo : float = 45	# 0 => 0 + (90 / 2)
-var x_maximo : float = 755	# 800 => 800- (90 / 2)
+var x_maximo : float = 755	# 800 => 800 - (90 / 2)
 
 
 func _process(delta):
@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func movimentar_paddle(delta : float) -> void:
-	# movimenta o Paddle para Esquerda/Direita
+	# Movimenta o Paddle para Esquerda/Direita
 	if Input.is_action_pressed("mv-esquerdo"):
 		position.x -= velocidade_do_paddle * delta
 

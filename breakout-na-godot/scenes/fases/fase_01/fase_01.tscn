@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu3p3i2gvatsj"]
+[gd_scene load_steps=4 format=3 uid="uid://cu3p3i2gvatsj"]
 
 [ext_resource type="Texture2D" uid="uid://dkox74bf3csop" path="res://assets/sprites/campo-roxo.png" id="1_y5hhp"]
 [ext_resource type="PackedScene" uid="uid://csrr51oa8ywqk" path="res://scenes/paddle/paddle.tscn" id="2_0h4wr"]
+[ext_resource type="PackedScene" uid="uid://h17w5q1iroht" path="res://scenes/bola/bola.tscn" id="3_jy2ga"]
 
 [node name="Fase01" type="Node2D"]
 
@@ -11,3 +12,6 @@ texture = ExtResource("1_y5hhp")
 
 [node name="Paddle" parent="." instance=ExtResource("2_0h4wr")]
 position = Vector2(400, 550)
+
+[node name="Bola" parent="." instance=ExtResource("3_jy2ga")]
+position = Vector2(400, 500)

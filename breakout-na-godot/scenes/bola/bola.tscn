@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://h17w5q1iroht"]
+
+[ext_resource type="Script" path="res://scenes/bola/bola.gd" id="1_u2cjm"]
+[ext_resource type="Texture2D" uid="uid://bem1t85u1rrbr" path="res://assets/sprites/bola.png" id="1_wu2hy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krm4m"]
+
+[node name="Bola" type="Area2D"]
+script = ExtResource("1_u2cjm")
+
+[node name="SpriteDaBola" type="Sprite2D" parent="."]
+texture = ExtResource("1_wu2hy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_krm4m")
