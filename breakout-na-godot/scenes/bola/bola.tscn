@@ -14,4 +14,8 @@ texture = ExtResource("1_wu2hy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_krm4m")
 
+[node name="TimerDaBola" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimerDaBola" to="." method="_on_timer_da_bola_timeout"]

@@ -1,6 +1,9 @@
 extends Area2D
 
 
+# Referências Gerais
+@onready var timer_da_bola : Timer = $TimerDaBola
+
 # Movimento da Bola
 var velocidade_da_bola : float = 400.0
 var posicao_inicial : Vector2 = Vector2(400, 500)
@@ -15,9 +18,11 @@ var y_maximo : float = 600
 
 # Verificações
 var primeiro_lancamento : bool = true
+var caiu_da_tela : bool = false
 
 
 func _ready():
+	timer_da_bola.one_shot = true
 	resetar_bola()
 
 
@@ -59,9 +64,26 @@ func verificar_posicao_da_bola() -> void:
 		
 		if position.x <= x_minimo or position.x >= x_maximo:
 			nova_direcao.x *= -1
+	
+	# Se a Bola cair da tela
+	if position.y > y_maximo and not caiu_da_tela:
+		timer_da_bola.start()
+		caiu_da_tela = true
+
+
+func sair_da_tela() -> void:
+	# Para o movimento da Bola e reseta sua posição
+	nova_direcao = Vector2(0, 0)
+	primeiro_lancamento = true
+	resetar_bola()
 
 
 func _on_body_entered(body):
 	# Se colidir com o Paddle, rebate
 	if body.is_in_group("paddle"):
 		nova_direcao.y *= -1	
+
+
+func _on_timer_da_bola_timeout():
+	sair_da_tela()
+	caiu_da_tela = false	
