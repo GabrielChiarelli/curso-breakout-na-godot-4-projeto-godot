@@ -82,6 +82,11 @@ func _on_body_entered(body):
 	# Se colidir com o Paddle, rebate
 	if body.is_in_group("paddle"):
 		nova_direcao.y *= -1	
+	
+	# Se colidir com o Bloco, desconta sua vida e rebate
+	elif body.is_in_group("blocos"):
+		body.receber_dano()
+		nova_direcao.y *= -1
 
 
 func _on_timer_da_bola_timeout():
