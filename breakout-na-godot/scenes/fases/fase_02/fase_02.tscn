@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3tsnvbmjopsf"]
+
+[ext_resource type="Texture2D" uid="uid://dkox74bf3csop" path="res://assets/sprites/campo-roxo.png" id="1_gg6ry"]
+[ext_resource type="PackedScene" uid="uid://csrr51oa8ywqk" path="res://scenes/paddle/paddle.tscn" id="2_g83dj"]
+[ext_resource type="PackedScene" uid="uid://h17w5q1iroht" path="res://scenes/bola/bola.tscn" id="3_idfwl"]
+[ext_resource type="PackedScene" uid="uid://dh5rpeuhfoqpk" path="res://scenes/bloco/bloco.tscn" id="4_r74yg"]
+[ext_resource type="PackedScene" uid="uid://74yx6akk6vh3" path="res://scenes/game_manager/game_manager.tscn" id="5_h0ebo"]
+
+[node name="Fase02" type="Node2D"]
+
+[node name="ImagemDeFundo" type="Sprite2D" parent="."]
+position = Vector2(400, 300)
+texture = ExtResource("1_gg6ry")
+
+[node name="Paddle" parent="." instance=ExtResource("2_g83dj")]
+position = Vector2(400, 550)
+
+[node name="Bola" parent="." instance=ExtResource("3_idfwl")]
+position = Vector2(400, 500)
+
+[node name="Blocos" type="Node2D" parent="."]
+
+[node name="Bloco" parent="Blocos" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_r74yg")]
+position = Vector2(309, 319)
+game_manager = NodePath("../../GameManager")
+vida_do_bloco = 3
+
+[node name="Bloco2" parent="Blocos" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_r74yg")]
+position = Vector2(479, 319)
+game_manager = NodePath("../../GameManager")
+vida_do_bloco = 3
+
+[node name="GameManager" parent="." node_paths=PackedStringArray("blocos") instance=ExtResource("5_h0ebo")]
+blocos = NodePath("../Blocos")
+proxima_fase = "res://scenes/fases/fase_01/fase_01.tscn"
