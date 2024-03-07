@@ -17,9 +17,19 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	receber_inputs()
 	
+
+func receber_inputs() -> void:
+	# Reinicia a fase
+	if Input.is_action_just_pressed("reiniciar"):
+		get_tree().reload_current_scene()
 	
+	# Sai do jogo
+	if Input.is_action_just_pressed("sair"):
+		get_tree().quit()
+
+
 func buscar_blocos() -> void:
 	# Conta quantos Blocos há na fase
 	for bloco in blocos.get_children():
